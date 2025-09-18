@@ -97,8 +97,26 @@ body {
   padding: 8px !important;
   background-color: var(--gray) !important;
 }
+.card-messenger-chat {
+  height: 75vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* padding: 8px !important; */
+  background-color: var(--gray) !important;
+  border: 1px solid #f8f9f8 !important;
+  overflow: auto;
+}
 .badge-text {
   text-align: end;
+}
+.chat-text {
+  padding: 6px !important;
+  border-radius: 8px !important;
+  background-color: #dce7ff !important;
+  margin: 4px !important;
+  /* width: auto !important; */
+
 }
 
 :where(
@@ -214,4 +232,19 @@ body {
 }
 .text-small {
   color: #4b4b4b;
+}
+:where(.css-dev-only-do-not-override-xepvsj).ant-divider-horizontal {
+  display: flex;
+  clear: both;
+  width: 100%;
+  min-width: 100%;
+  margin: 8px 0 !important;
+}
+.tag-chat {
+  padding: 4px !important;
+  margin-bottom: 4px !important;
+}
+.p-right {
+  align-items: end !important;
+  text-align: end !important;
 }

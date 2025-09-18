@@ -80,7 +80,7 @@ const SideBar: React.FC = () => {
   return (
     <div>
       <div className="side">
-        <Row className="mb-6">
+        <Row className="mb-4 ml-1">
           <Col span={12}>
             <Popover
               content={clickContent}
@@ -108,7 +108,7 @@ const SideBar: React.FC = () => {
           selectedKeys={[pathname]}
           defaultOpenKeys={["sub1"]}
           mode="inline"
-          className="mt-4"
+          className="mt-2"
           theme="dark"
           inlineCollapsed={collapsed}
           items={items}
