@@ -33,10 +33,10 @@ export default function RootLayout({
       >
         {/* <Nav /> */}
         <Row>
-          <Col span={4}>
+          <Col span={3}>
             <Side />
           </Col>
-          <Col span={20}>
+          <Col span={21}>
             <AntdRegistry>{children}</AntdRegistry>
           </Col>
         </Row>

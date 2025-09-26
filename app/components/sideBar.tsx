@@ -20,6 +20,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   PieChartOutlined,
+  ShoppingCartOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Menu, Badge, Popover } from "antd";
@@ -38,12 +39,18 @@ const items: MenuItem[] = [
     ),
     label: "Messenger",
   },
-  { key: "/learn", icon: <ContainerOutlined />, label: "Option 3" },
+  { key: "/order", icon: <ShoppingCartOutlined />, label: "Order" },
 ];
 const clickContent = (
   <div>
-    <Avatar size={50} src="https://image.springnews.co.th/uploads/images/contents/w1024/2024/11/5xN8L1lbxnH3Sk1nm6Wp.webp?x-image-process=style/lg-webp" />
-    <strong style={{margin: '12px'}}>Nontawat Wichapha (นนทวัฒน์ วิชาผา)</strong><br />
+    <Avatar
+      size={50}
+      src="https://image.springnews.co.th/uploads/images/contents/w1024/2024/11/5xN8L1lbxnH3Sk1nm6Wp.webp?x-image-process=style/lg-webp"
+    />
+    <strong style={{ margin: "12px" }}>
+      Nontawat Wichapha (นนทวัฒน์ วิชาผา)
+    </strong>
+    <br />
     <div className="content-popover mt-4">
       <span> profile</span>
     </div>
@@ -85,8 +92,8 @@ const SideBar: React.FC = () => {
             <Popover
               content={clickContent}
               trigger="click"
-              style={{ width: 500}}
-              placement="right" 
+              style={{ width: 500 }}
+              placement="right"
               open={open}
               onOpenChange={handleOpenChange}
             >
