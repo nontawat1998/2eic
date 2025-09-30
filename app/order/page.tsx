@@ -8,6 +8,7 @@ import {
   Image,
   Badge,
   Button,
+  Select,
   Tag,
   Divider,
   Input,
@@ -48,33 +49,35 @@ type MenuItem = {
   text: string;
 };
 
-
 interface DataType {
   key: React.Key;
   name: string;
-  age: number;
-  address: string;
+  age: string;
+  tracking: string;
+  dateCreate: string;
+  status: string;
+  buyType: string;
 }
 const columns: TableColumnsType<DataType> = [
   {
-    title: "Full Name",
-    width: 100,
+    title: "Order Name",
+    width: 200,
     dataIndex: "name",
     key: "name",
     fixed: "left",
   },
   {
-    title: "Age",
-    width: 100,
+    title: "Order ID",
+    width: 150,
     dataIndex: "age",
     key: "age",
     fixed: "left",
     sorter: true,
   },
-  { title: "Column 1", dataIndex: "address", key: "1" },
-  { title: "Column 2", dataIndex: "address", key: "2" },
-  { title: "Column 3", dataIndex: "address", key: "3" },
-  { title: "Column 4", dataIndex: "address", key: "4" },
+  { title: "Tracking Number", dataIndex: "tracking", key: "1" },
+  { title: "Date Create", dataIndex: "dateCreate", key: "2" },
+  { title: "Status", dataIndex: "status", sorter: true, key: "3" },
+  { title: "Buy Type", dataIndex: "buyType", key: "4" },
   {
     title: "Action",
     key: "operation",
@@ -85,18 +88,114 @@ const columns: TableColumnsType<DataType> = [
 ];
 
 const dataSource: DataType[] = [
-  { key: "1", name: "Olivia", age: 32, address: "New York Park" },
-  { key: "2", name: "Ethan", age: 40, address: "London Park" },
-  { key: "3", name: "Olivia", age: 32, address: "New York Park" },
-  { key: "4", name: "Ethan", age: 40, address: "London Park" },
-  { key: "5", name: "Olivia", age: 32, address: "New York Park" },
-  { key: "6", name: "Ethan", age: 40, address: "London Park" },
-  { key: "7", name: "Olivia", age: 32, address: "New York Park" },
-  { key: "8", name: "Ethan", age: 40, address: "London Park" },
-  { key: "10", name: "Olivia", age: 32, address: "New York Park" },
-  { key: "11", name: "Ethan", age: 40, address: "London Park" },
-  { key: "12", name: "Olivia", age: 32, address: "New York Park" },
-  { key: "13", name: "Ethan", age: 40, address: "London Park" },
+  {
+    key: "1",
+    name: "Olivia",
+    age: "THO000012332",
+    tracking: "EF582568151TH",
+    dateCreate: "10/05/2025",
+    status: "Penning",
+    buyType: "COD",
+  },
+  {
+    key: "2",
+    name: "Ethan",
+    age: "THO000012332",
+    tracking: "EF582568151TH",
+    dateCreate: "10/05/2025",
+    status: "done",
+    buyType: "COD",
+  },
+  {
+    key: "3",
+    name: "Olivia",
+    age: "THO000012332",
+    tracking: "EF582568151TH",
+    dateCreate: "10/05/2025",
+    status: "Transpot",
+    buyType: "COD",
+  },
+  {
+    key: "4",
+    name: "Ethan",
+    age: "THO000012332",
+    tracking: "EF582568151TH",
+    dateCreate: "10/05/2025",
+    status: "done",
+    buyType: "Shopee",
+  },
+  {
+    key: "5",
+    name: "Olivia",
+    age: "THO000012332",
+    tracking: "EF582568151TH",
+    dateCreate: "10/05/2025",
+    status: "done",
+    buyType: "COD",
+  },
+  {
+    key: "6",
+    name: "Ethan",
+    age: "THO000012332",
+    tracking: "EF582568151TH",
+    dateCreate: "10/05/2025",
+    status: "done",
+    buyType: "COD",
+  },
+  {
+    key: "7",
+    name: "Olivia",
+    age: "THO000012332",
+    tracking: "EF582568151TH",
+    dateCreate: "10/05/2025",
+    status: "done",
+    buyType: "Tiktok",
+  },
+  {
+    key: "8",
+    name: "Ethan",
+    age: "THO000012332",
+    tracking: "EF582568151TH",
+    dateCreate: "10/05/2025",
+    status: "Penning",
+    buyType: "COD",
+  },
+  {
+    key: "10",
+    name: "Olivia",
+    age: "THO000012332",
+    tracking: "EF582568151TH",
+    dateCreate: "10/05/2025",
+    status: "done",
+    buyType: "COD",
+  },
+  {
+    key: "11",
+    name: "Ethan",
+    age: "THO000012332",
+    tracking: "EF582568151TH",
+    dateCreate: "10/05/2025",
+    status: "done",
+    buyType: "COD",
+  },
+  {
+    key: "12",
+    name: "Olivia",
+    age: "THO000012332",
+    tracking: "EF582568151TH",
+    dateCreate: "10/05/2025",
+    status: "done",
+    buyType: "COD",
+  },
+  {
+    key: "13",
+    name: "Ethan",
+    age: "THO000012332",
+    tracking: "EF582568151TH",
+    dateCreate: "10/05/2025",
+    status: "done",
+    buyType: "COD",
+  },
 ];
 
 export default function Page() {
@@ -196,6 +295,11 @@ export default function Page() {
     },
   ]);
   const [text, setText] = useState("");
+  const [orderId, setOrderID] = useState("");
+  const [status, setStatus] = useState("");
+  const onChange = (value: string) => {
+    setStatus(value);
+  };
 
   const handleAdd = () => {
     if (!text.trim()) return; // prevent empty
@@ -224,7 +328,7 @@ export default function Page() {
                   <Input
                     variant="filled"
                     size="large"
-                    placeholder="Nontawat Wichapha (นนทวัฒน์ วิชาผา)"
+                    placeholder="Order Name"
                     value={text}
                     onPressEnter={handleAdd}
                     onChange={(e) => setText(e.target.value)}
@@ -234,20 +338,44 @@ export default function Page() {
                   <Input
                     variant="filled"
                     size="large"
-                    placeholder="Nontawat Wichapha (นนทวัฒน์ วิชาผา)"
-                    value={text}
+                    placeholder="Order ID"
+                    value={orderId}
                     onPressEnter={handleAdd}
-                    onChange={(e) => setText(e.target.value)}
+                    onChange={(e) => setOrderID(e.target.value)}
                   />
                 </Col>
                 <Col span={8}>
-                  <Input
+                  {/* <Input
                     variant="filled"
                     size="large"
-                    placeholder="Nontawat Wichapha (นนทวัฒน์ วิชาผา)"
-                    value={text}
+                    placeholder="Status"
+                    value={status}
                     onPressEnter={handleAdd}
-                    onChange={(e) => setText(e.target.value)}
+                    onChange={(e) => setStatus(e.target.value)}
+                  /> */}
+                  <Select
+                    showSearch
+                    variant="filled"
+                    size="large"
+                    placeholder="Status"
+                    value={status}
+                    style={{ width: '100%' }}
+                    optionFilterProp="label"
+                    onChange={onChange}
+                    options={[
+                      {
+                        value: "Done",
+                        label: "Done",
+                      },
+                      {
+                        value: "Pending",
+                        label: "Pending",
+                      },
+                      {
+                        value: "Transpot",
+                        label: "Transpot",
+                      },
+                    ]}
                   />
                 </Col>
                 <Col span={24} className="btn-cart">

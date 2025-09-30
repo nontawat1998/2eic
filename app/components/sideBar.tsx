@@ -52,7 +52,7 @@ const clickContent = (
     </strong>
     <br />
     <div className="content-popover mt-4">
-      <span> profile</span>
+      <span> Profile</span>
     </div>
     <div className="content-popover">
       <span> Setting</span>
