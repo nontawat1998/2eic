@@ -71,6 +71,7 @@ const SideBar: React.FC = () => {
   };
   const router = useRouter();
   const pathname = usePathname();
+  
   const handleClick: MenuProps["onClick"] = (e) => {
     router.push(e.key as string);
   };

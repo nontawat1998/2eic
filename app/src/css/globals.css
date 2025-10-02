@@ -98,7 +98,7 @@ body {
   background-color: var(--gray) !important;
 }
 .card-messenger-order {
-  height: 78vh;
+  height: 73vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -106,7 +106,7 @@ body {
   background-color: var(--gray) !important;
 }
 .card-messenger-order-filter {
-  height: 15vh;
+  height: 20vh;
   width: 100%;
   display: flex;
   flex-direction: column;

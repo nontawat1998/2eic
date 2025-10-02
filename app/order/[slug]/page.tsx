@@ -15,8 +15,6 @@ import {
   Space,
 } from "antd";
 import { useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
-
 import { Table, Empty } from "antd";
 import type { TableColumnsType } from "antd";
 import { createStyles } from "antd-style";
@@ -318,93 +316,17 @@ export default function Page() {
     setItems([...items, newItem]);
     setText(""); // clear input after adding
   };
-const router = useRouter();
-  
-  const handleClick = () => {
-    router.push("/order/add" as string);
-  };
 
   return (
     <div>
       <div className="mr-4 mt-4">
         <Row gutter={[4, 16]} className="pb-4">
           <Col span={24}>
-            <Card variant="borderless" className="card-messenger-order-filter">
-              <Row gutter={[8, 8]}>
-                <Col span={8}>
-                  <span>Order Name</span>
-                  <Input
-                    variant="filled"
-                    size="large"
-                    placeholder="Order Name"
-                    value={text}
-                    onPressEnter={handleAdd}
-                    onChange={(e) => setText(e.target.value)}
-                  />
-                </Col>
-                <Col span={8}>
-                  <span>Order ID</span>
-                  <Input
-                    variant="filled"
-                    size="large"
-                    placeholder="Order ID"
-                    value={orderId}
-                    onPressEnter={handleAdd}
-                    onChange={(e) => setOrderID(e.target.value)}
-                  />
-                </Col>
-                <Col span={8}>
-                  <span>Status</span>
-                  <Select
-                    showSearch
-                    variant="filled"
-                    size="large"
-                    placeholder="Status"
-                    value={status}
-                    style={{ width: "100%" }}
-                    optionFilterProp="label"
-                    onChange={onChange}
-                    options={[
-                      {
-                        value: "Done",
-                        label: "Done",
-                      },
-                      {
-                        value: "Pending",
-                        label: "Pending",
-                      },
-                      {
-                        value: "Transpot",
-                        label: "Transpot",
-                      },
-                    ]}
-                  />
-                </Col>
-                <Col span={24} className="btn-cart">
-                  <Button icon={<FilterOutlined />} className="m-2">
-                    Query
-                  </Button>
-                  <Button icon={<ReloadOutlined />} className="m-2">
-                    Reset
-                  </Button>
-                  <Button onClick={handleClick} icon={<PlusCircleOutlined />} className="ml-2">
-                    Add new
-                  </Button>
-                </Col>
-              </Row>
+            <Card variant="borderless" className="card-learn">
+              
             </Card>
           </Col>
-          <Col span={24}>
-            <Card variant="borderless" className="card-messenger-order">
-              <Table<DataType>
-                // className={styles.customTable}
-                columns={columns}
-                locale={{ emptyText: <Empty description="No Data"></Empty> }}
-                dataSource={dataSource}
-                scroll={{ x: "max-content", y: 55 * 7 }}
-              />
-            </Card>
-          </Col>
+         
         </Row>
       </div>
     </div>
