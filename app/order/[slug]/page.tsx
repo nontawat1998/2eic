@@ -13,6 +13,7 @@ import {
   Divider,
   Input,
   Space,
+  Modal,
 } from "antd";
 import { useState } from "react";
 import { Table, Empty } from "antd";
@@ -48,157 +49,18 @@ type MenuItem = {
   color: string;
   text: string;
 };
-
-interface DataType {
-  key: React.Key;
-  name: string;
-  age: string;
-  tracking: string;
-  dateCreate: string;
-  status: string;
-  buyType: string;
-}
-const columns: TableColumnsType<DataType> = [
-  {
-    title: "Order Name",
-    width: 200,
-    dataIndex: "name",
-    key: "name",
-    fixed: "left",
-  },
-  {
-    title: "Order ID",
-    width: 150,
-    dataIndex: "age",
-    key: "age",
-    fixed: "left",
-    sorter: true,
-  },
-  { title: "Tracking Number", dataIndex: "tracking", key: "1" },
-  { title: "Date Create", dataIndex: "dateCreate", key: "2" },
-  { title: "Status", dataIndex: "status", sorter: true, key: "3" },
-  { title: "Buy Type", dataIndex: "buyType", key: "4" },
-  {
-    title: "Action",
-    key: "operation",
-    fixed: "right",
-    width: 100,
-    render: () => <a>action</a>,
-  },
-];
-
-const dataSource: DataType[] = [
-  {
-    key: "1",
-    name: "Olivia",
-    age: "THO000012332",
-    tracking: "EF582568151TH",
-    dateCreate: "10/05/2025",
-    status: "Penning",
-    buyType: "COD",
-  },
-  {
-    key: "2",
-    name: "Ethan",
-    age: "THO000012332",
-    tracking: "EF582568151TH",
-    dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
-  },
-  {
-    key: "3",
-    name: "Olivia",
-    age: "THO000012332",
-    tracking: "EF582568151TH",
-    dateCreate: "10/05/2025",
-    status: "Transpot",
-    buyType: "COD",
-  },
-  {
-    key: "4",
-    name: "Ethan",
-    age: "THO000012332",
-    tracking: "EF582568151TH",
-    dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "Shopee",
-  },
-  {
-    key: "5",
-    name: "Olivia",
-    age: "THO000012332",
-    tracking: "EF582568151TH",
-    dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
-  },
-  {
-    key: "6",
-    name: "Ethan",
-    age: "THO000012332",
-    tracking: "EF582568151TH",
-    dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
-  },
-  {
-    key: "7",
-    name: "Olivia",
-    age: "THO000012332",
-    tracking: "EF582568151TH",
-    dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "Tiktok",
-  },
-  {
-    key: "8",
-    name: "Ethan",
-    age: "THO000012332",
-    tracking: "EF582568151TH",
-    dateCreate: "10/05/2025",
-    status: "Penning",
-    buyType: "COD",
-  },
-  {
-    key: "10",
-    name: "Olivia",
-    age: "THO000012332",
-    tracking: "EF582568151TH",
-    dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
-  },
-  {
-    key: "11",
-    name: "Ethan",
-    age: "THO000012332",
-    tracking: "EF582568151TH",
-    dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
-  },
-  {
-    key: "12",
-    name: "Olivia",
-    age: "THO000012332",
-    tracking: "EF582568151TH",
-    dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
-  },
-  {
-    key: "13",
-    name: "Ethan",
-    age: "THO000012332",
-    tracking: "EF582568151TH",
-    dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
-  },
-];
-
 export default function Page() {
+  const [open, setOpen] = React.useState<boolean>(false);
+  const [loading, setLoading] = React.useState<boolean>(true);
+
+  const showLoading = () => {
+    setOpen(true);
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  };
   const [items, setItems] = useState<MenuItem[]>([
     {
       key: "1",
@@ -232,104 +94,293 @@ export default function Page() {
       color: "#9356db",
       text: "About Mr.Nontawat Wichapha.",
     },
-    {
-      key: "5",
-      icon: <MailOutlined />,
-      label:
-        "https://s.isanook.com/ca/0/ui/278/1393005/japanese-artist-turns-animals-that-have-become-famous-on-the-internet-into-sculptures-5bd86b0498b2a__880_1540983731.jpg",
-      color: "#0375e4",
-      text: "Why he so handsome and very smart.",
-    },
-    {
-      key: "6",
-      icon: <MenuFoldOutlined />,
-      label:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQW77amvFH85aqDHiSeujurIQZGPPUJdnnTsN-5HGfVDFF80QPYj-Rsnrd8AOceImEWr0&usqp=CAU",
-      color: "#fe7d1e",
-      text: "Please answer me about this question.",
-    },
-    {
-      key: "7",
-      icon: <MailOutlined />,
-      label:
-        "https://mona50753952.wordpress.com/wp-content/uploads/2020/07/977084c8.jpg?w=568",
-      color: "#0375e4",
-      text: "If you don't answer me i will die any time.",
-    },
-    {
-      key: "8",
-      icon: <MailOutlined />,
-      label: "https://fbi.dek-d.com/24/1284875/107627656",
-      color: "#0375e4",
-      text: "Please!!!!!!!!!!!!!",
-    },
-    {
-      key: "9",
-      icon: <MenuFoldOutlined />,
-      label: "https://img.kapook.com/u/2015/pree/pet7/q7_15.jpg",
-      color: "#fe7d1e",
-      text: "I'm so sad.",
-    },
-    {
-      key: "10",
-      icon: <MailOutlined />,
-      label:
-        "https://www.siamfishing.com/_pictures/content/upload2007/200709/11906073861.jpg",
-      color: "#0375e4",
-      text: "Answer me sir.",
-    },
-    {
-      key: "11",
-      icon: <MailOutlined />,
-      label:
-        "https://today-obs.line-scdn.net/0hbdHWTrvnPUt1LhebmrlCHE94PiRGQi5IERhsSClAY38KTXxJShpzflknYi5ZSnoVG0B7KVEqJnpQSX8cQRtz/w280",
-      color: "#0375e4",
-      text: "please please please",
-    },
-    {
-      key: "12",
-      icon: <MenuFoldOutlined />,
-      label: "https://us-fbcloud.net/wb/data/1298/1298920-img.utmdse.187yh.jpg",
-      color: "#fe7d1e",
-      text: ".....",
-    },
   ]);
-  const [text, setText] = useState("");
-  const [orderId, setOrderID] = useState("");
-  const [status, setStatus] = useState("");
-  const onChange = (value: string) => {
-    setStatus(value);
-  };
-
-  const handleAdd = () => {
-    if (!text.trim()) return;
-
-    const newItem: MenuItem = {
-      key: String(items.length + 1),
-      icon: <ContainerOutlined />,
-      label:
-        "https://www.mangozero.com/wp-content/uploads/2023/11/IMG_7598-600x600.jpg", 
-      color: "#000",
-      text: text, 
-    };
-
-    setItems([...items, newItem]);
-    setText(""); 
-  };
-
   return (
     <div>
       <div className="mr-4 mt-4">
+        <Modal
+          title={<p>Loading Modal</p>}
+          footer={
+            <Button type="primary" onClick={showLoading}>
+              Reload
+            </Button>
+          }
+          loading={loading}
+          open={open}
+          onCancel={() => setOpen(false)}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Modal>
         <Row gutter={[4, 16]} className="pb-4">
           <Col span={24}>
             <Card variant="borderless" className="card-learn">
-              
+              <Row gutter={[8, 16]} className="p-2">
+                <Col span={8}>
+                  <Card className="card-order-create">
+                    <Card className="card-order-create">
+                      <strong>Order ID : </strong> <span>#123456</span>
+                      <br />
+                      <strong>Status : </strong>
+                      <Tag color="#55acee">New Order</Tag>
+                    </Card>
+                    <div className="mt-2 ">
+                      <Card className="card-order-create-main">
+                        <strong>Customer Informaion</strong>
+                        <Row gutter={[8, 8]} className="pb-2">
+                          <Col span={12}>
+                            <span>Firstname</span>{" "}
+                            <span className="text-red">*</span>
+                            <Input
+                              variant="filled"
+                              size="large"
+                              placeholder="Firstname"
+                            />
+                          </Col>
+                          <Col span={12}>
+                            <span>Lastname</span>{" "}
+                            <span className="text-red">*</span>
+                            <Input
+                              variant="filled"
+                              size="large"
+                              placeholder="Lastname"
+                            />
+                          </Col>
+                          <Col span={12}>
+                            <span>Phone</span>{" "}
+                            <span className="text-red">*</span>
+                            <Input
+                              variant="filled"
+                              size="large"
+                              placeholder="Phone"
+                            />
+                          </Col>
+                          <Col span={12}>
+                            <span>Email</span>
+                            <Input
+                              variant="filled"
+                              size="large"
+                              placeholder="Email"
+                            />
+                          </Col>
+                        </Row>
+                        <strong>Adress Informaion</strong>
+                        <Row gutter={[8, 8]} className="pb-2">
+                          <Col span={24}>
+                            <span>Adress</span>
+                            <span className="text-red">*</span>
+                            <Input
+                              variant="filled"
+                              size="large"
+                              placeholder="Adress"
+                            />
+                          </Col>
+                          <Col span={12}>
+                            <span>Sub District</span>
+                            <span className="text-red">*</span>
+                            <Input
+                              variant="filled"
+                              size="large"
+                              placeholder="Sub District"
+                            />
+                          </Col>
+                          <Col span={12}>
+                            <span> District</span>
+                            <span className="text-red">*</span>
+                            <Input
+                              variant="filled"
+                              size="large"
+                              placeholder="Sub District"
+                            />
+                          </Col>
+                          <Col span={12}>
+                            <span> Province</span>
+                            <span className="text-red">*</span>
+                            <Input
+                              variant="filled"
+                              size="large"
+                              placeholder="Province"
+                            />
+                          </Col>
+                          <Col span={12}>
+                            <span> Zipcode</span>
+                            <span className="text-red">*</span>
+                            <Input
+                              variant="filled"
+                              size="large"
+                              placeholder="Zipcode"
+                            />
+                          </Col>
+                        </Row>
+                        <strong>Shiping Informaion</strong>
+                        <Row gutter={[8, 8]} className="pb-2">
+                          <Col span={24}>
+                            <span>Payment Type</span>
+                            <span className="text-red">*</span>
+                            <Select
+                              showSearch
+                              variant="filled"
+                              size="large"
+                              placeholder="Payment Type"
+                              style={{ width: "100%" }}
+                              optionFilterProp="label"
+                              options={[
+                                {
+                                  value: "Flash",
+                                  label: "Flash",
+                                },
+                                {
+                                  value: "Thiapost",
+                                  label: "Thiapost",
+                                },
+                                {
+                                  value: "COD",
+                                  label: "COD",
+                                },
+                              ]}
+                            />
+                          </Col>
+                        </Row>
+                        <strong>Payment Informaion</strong>
+                        <Row gutter={[8, 8]} className="pb-2">
+                          <Col span={12}>
+                            <span>Payment Type</span>
+                            <span className="text-red">*</span>
+                            <Select
+                              showSearch
+                              variant="filled"
+                              size="large"
+                              placeholder="Payment Type"
+                              style={{ width: "100%" }}
+                              optionFilterProp="label"
+                              options={[
+                                {
+                                  value: "Transfer",
+                                  label: "Transfer",
+                                },
+                                {
+                                  value: "Cash",
+                                  label: "Cash",
+                                },
+                                {
+                                  value: "COD",
+                                  label: "COD",
+                                },
+                              ]}
+                            />
+                          </Col>
+                          <Col span={12}>
+                            <span>Total</span>
+                            <span className="text-red">*</span>
+                            <Input
+                              variant="filled"
+                              size="large"
+                              placeholder="Total"
+                            />
+                          </Col>
+                        </Row>
+                      </Card>
+                    </div>
+                  </Card>
+                </Col>
+                <Col span={16}>
+                  <Card className="card-order-create">
+                    <Col span={24} className="btn-cart">
+                      <Button
+                        onClick={showLoading}
+                        icon={<PlusCircleOutlined />}
+                        className="ml-2"
+                      >
+                        Add Product
+                      </Button>
+                    </Col>
+                    <Col span={24}>
+                      <Row gutter={[8, 8]} className="header-order">
+                        <Col span={4}>
+                          <strong>Image</strong>
+                        </Col>
+                        <Col span={16}>
+                          <strong>Detail</strong>
+                        </Col>
+                        <Col span={4} className="table-order ">
+                          <strong>Price (฿)</strong>
+                        </Col>
+                      </Row>
+                      <div className="product-card">
+                        {items.map((item) => (
+                          <Row
+                            gutter={[8, 8]}
+                            key={item?.key}
+                            className="product-row"
+                          >
+                            <Col span={2}>
+                              <Image src={item?.label} alt="Vercel logomark" />
+                            </Col>
+                            <Col span={18}>
+                              <strong>
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit.
+                              </strong>
+                              <br />
+                              <small>123-123-123</small>
+                            </Col>
+                            <Col span={4} className="table-order">
+                              <span>100.00</span>
+                            </Col>
+                          </Row>
+                        ))}
+                      </div>
+                      <div className="mt-8">
+                        <Row gutter={[8, 8]}>
+                          <Col span={12} className="amount-count-left">
+                            <strong>Amount</strong>
+                          </Col>
+                          <Col span={12} className="amount-count">
+                            <span>฿100.00</span>
+                          </Col>
+                        </Row>
+                        <Row gutter={[8, 8]}>
+                          <Col span={12} className="amount-count-left">
+                            <strong>Transfer</strong>
+                          </Col>
+                          <Col span={12} className="amount-count">
+                            <span>฿100.00</span>
+                          </Col>
+                        </Row>
+                        <Row gutter={[8, 8]}>
+                          <Col span={12} className="amount-count-left">
+                            <strong>Discount</strong>
+                          </Col>
+                          <Col span={12} className="amount-count">
+                            <span>฿100.00</span>
+                          </Col>
+                        </Row>
+                        <Row gutter={[8, 8]}>
+                          <Col span={12} className="amount-count-left">
+                            <strong>VAT(7%)</strong>
+                          </Col>
+                          <Col span={12} className="amount-count">
+                            <span>฿100.00</span>
+                          </Col>
+                        </Row>
+                        <Row gutter={[8, 8]}>
+                          <Col span={12} className="amount-count-left">
+                            <strong>Total</strong>
+                          </Col>
+                          <Col span={12} className="amount-count">
+                            <span>฿100.00</span>
+                          </Col>
+                        </Row>
+                      </div>
+                    </Col>
+                  </Card>
+                </Col>
+              </Row>
             </Card>
           </Col>
-         
         </Row>
       </div>
     </div>
   );
 }
-
