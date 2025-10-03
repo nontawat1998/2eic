@@ -304,19 +304,19 @@ export default function Page() {
   };
 
   const handleAdd = () => {
-    if (!text.trim()) return; // prevent empty
+    if (!text.trim()) return; 
 
     const newItem: MenuItem = {
       key: String(items.length + 1),
       icon: <ContainerOutlined />,
       label:
-        "https://www.mangozero.com/wp-content/uploads/2023/11/IMG_7598-600x600.jpg", // you can also bind this from another input if needed
+        "https://www.mangozero.com/wp-content/uploads/2023/11/IMG_7598-600x600.jpg", 
       color: "#000",
-      text: text, // 👈 use the input value
+      text: text, 
     };
 
     setItems([...items, newItem]);
-    setText(""); // clear input after adding
+    setText(""); 
   };
 const router = useRouter();
   
@@ -411,4 +411,3 @@ const router = useRouter();
   );
 }
 
-// export default App;
