@@ -58,7 +58,7 @@ interface DataType {
   tracking: string;
   dateCreate: string;
   status: string;
-  buyType: string;
+  buyType: React.ReactNode;
 }
 const columns: TableColumnsType<DataType> = [
   {
@@ -97,7 +97,7 @@ const dataSource: DataType[] = [
     tracking: "EF582568151TH",
     dateCreate: "10/05/2025",
     status: "Penning",
-    buyType: "COD",
+    buyType: <Tag color="#55ee62ff">Transfer</Tag>,
   },
   {
     key: "2",
@@ -105,8 +105,8 @@ const dataSource: DataType[] = [
     age: "THO000012332",
     tracking: "EF582568151TH",
     dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
+    status: "Done",
+    buyType: <Tag color="#55acee">COD</Tag>,
   },
   {
     key: "3",
@@ -115,7 +115,7 @@ const dataSource: DataType[] = [
     tracking: "EF582568151TH",
     dateCreate: "10/05/2025",
     status: "Transpot",
-    buyType: "COD",
+    buyType: <Tag color="#55acee">COD</Tag>,
   },
   {
     key: "4",
@@ -123,8 +123,8 @@ const dataSource: DataType[] = [
     age: "THO000012332",
     tracking: "EF582568151TH",
     dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "Shopee",
+    status: "Done",
+    buyType: <Tag color="#55ee62ff">Transfer</Tag>,
   },
   {
     key: "5",
@@ -132,8 +132,8 @@ const dataSource: DataType[] = [
     age: "THO000012332",
     tracking: "EF582568151TH",
     dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
+    status: "Done",
+    buyType: <Tag color="#55acee">COD</Tag>,
   },
   {
     key: "6",
@@ -141,8 +141,8 @@ const dataSource: DataType[] = [
     age: "THO000012332",
     tracking: "EF582568151TH",
     dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
+    status: "Done",
+    buyType: <Tag color="#55acee">COD</Tag>,
   },
   {
     key: "7",
@@ -150,8 +150,8 @@ const dataSource: DataType[] = [
     age: "THO000012332",
     tracking: "EF582568151TH",
     dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "Tiktok",
+    status: "Done",
+    buyType: <Tag color="#ee55a4ff">Cash</Tag>,
   },
   {
     key: "8",
@@ -160,7 +160,7 @@ const dataSource: DataType[] = [
     tracking: "EF582568151TH",
     dateCreate: "10/05/2025",
     status: "Penning",
-    buyType: "COD",
+    buyType: <Tag color="#ee55a4ff">Cash</Tag>,
   },
   {
     key: "10",
@@ -168,8 +168,8 @@ const dataSource: DataType[] = [
     age: "THO000012332",
     tracking: "EF582568151TH",
     dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
+    status: "Done",
+    buyType: <Tag color="#55acee">COD</Tag>,
   },
   {
     key: "11",
@@ -177,8 +177,8 @@ const dataSource: DataType[] = [
     age: "THO000012332",
     tracking: "EF582568151TH",
     dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
+    status: "Done",
+    buyType: <Tag color="#55acee">COD</Tag>,
   },
   {
     key: "12",
@@ -186,8 +186,8 @@ const dataSource: DataType[] = [
     age: "THO000012332",
     tracking: "EF582568151TH",
     dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
+    status: "Done",
+    buyType: <Tag color="#55acee">COD</Tag>,
   },
   {
     key: "13",
@@ -195,8 +195,8 @@ const dataSource: DataType[] = [
     age: "THO000012332",
     tracking: "EF582568151TH",
     dateCreate: "10/05/2025",
-    status: "done",
-    buyType: "COD",
+    status: "Done",
+    buyType: <Tag color="#55acee">COD</Tag>,
   },
 ];
 
